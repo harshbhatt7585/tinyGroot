@@ -5,9 +5,8 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.5%2B-ee4c2c.svg)](https://pytorch.org/)
 [![Code style: ruff](https://img.shields.io/badge/lint-ruff-261230.svg)](https://github.com/astral-sh/ruff)
 
-**Small-scale LLM training you can actually read end to end** — nanochat-style
-pretraining, multi-token prediction (MTP), Token Superposition Training (TST),
-self-speculative decoding, chat SFT, and GSM8K RL — in one tidy package that runs
+**Small-scale LLM training you can actually read end to end**, inspred by nanochat-style
+pretraining but with different and added architecture with multi-token prediction (MTP), Token Superposition Training (TST), self-speculative decoding, chat SFT, and GSM8K RL — in one tidy package that runs
 on a laptop or scales to 8× H100 on [Modal](https://modal.com).
 
 > **Headline result:** the DeepSeek-MTP2 + TST recipe reaches **CORE ≈ 0.1162**,
@@ -125,18 +124,10 @@ speedrun_mps.sh   laptop launcher (Apple-Silicon / CPU)
 examples/         minimal copy-paste runnable steps
 ```
 
-## ☁️ Hugging Face uploads
-
-```bash
-HF_TOKEN=... tinygroot-hf-upload --checkpoint-dir runs/my-run --repo-id username/my-run
-```
-Training can also push automatically with `--push-to-hf --hf-repo-id username/my-run`.
-
 ## 📚 More
 
 - [BLOG.md](BLOG.md) — experiment log, leaderboards, and the full results table.
-- [CONTRIBUTING.md](CONTRIBUTING.md) — dev setup, linting, tests.
-- [CHANGELOG.md](CHANGELOG.md) — notable changes.
+
 
 ## 📄 License
 
