@@ -1,5 +1,9 @@
 # tinyGroot
 
+<p align="center">
+  <img src="assets/tinyGroot.png" alt="tinyGroot logo" width="320">
+</p>
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.10%E2%80%933.12-blue.svg)](pyproject.toml)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.5%2B-ee4c2c.svg)](https://pytorch.org/)
