@@ -1,7 +1,7 @@
 # tinyGroot
 
 <p align="center">
-  <img src="assets/tinyGroot.png" alt="tinyGroot logo" width="320">
+  <img src="docs/tinyGroot.png" alt="tinyGroot logo" width="320">
 </p>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
