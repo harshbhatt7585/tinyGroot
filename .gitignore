@@ -1,0 +1,15 @@
+.venv/
+.uv-cache/
+.ruff_cache/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+# build artifacts
+*.egg-info/
+dist/
+build/
+runs/
+data/
+wandb/
+nanochat/
+assets/
