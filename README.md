@@ -112,22 +112,6 @@ SLUG=run1 bash speed_run.sh pipeline 8gpu
 `SLUG` is the only name you type; date, GPU, and git SHA are filled in for you, and
 the full hyperparameter set is recorded in each run's `meta.json` + wandb.
 
-## 🖥️ Console commands
-
-After install, these are on your `PATH` (each also runs as `python -m tinygroot.<...>`):
-
-| Command | Does |
-| --- | --- |
-| `tinygroot-train` | Pretraining (causal LM + MTP/TST) |
-| `tinygroot-chat-sft` | Chat supervised fine-tuning |
-| `tinygroot-chat-rl` | GSM8K reinforcement learning |
-| `tinygroot-pretokenize` | Build token shards + tokenizer |
-| `tinygroot-sample` | Sample from a checkpoint |
-| `tinygroot-chat-infer` | Interactive chat with an SFT checkpoint |
-| `tinygroot-spec-decode` | Speculative-decoding benchmark/smoke test |
-| `tinygroot-eval-core` | CORE / chat evals |
-| `tinygroot-hf-upload` | Push a checkpoint dir to the Hugging Face Hub |
-
 ## 🗂️ Layout
 
 ```text
