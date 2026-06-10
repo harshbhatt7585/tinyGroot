@@ -33,15 +33,6 @@ make quickstart              # ≈ a few hundred steps on MPS/CPU
 `make quickstart` wraps `speedrun_mps.sh` with laptop-sized defaults. See
 [`examples/`](examples/) for individual steps (tokenize → train → sample).
 
-## 📦 Install
-
-| What you want | Command |
-| --- | --- |
-| Core (train/SFT/sample locally) | `uv sync` or `pip install -e .` |
-| + Modal remote launchers | `pip install -e ".[modal]"` |
-| + Weights & Biases logging | `pip install -e ".[wandb]"` |
-| + FlashAttention-3 kernels (Hopper) | `pip install -e ".[gpu]"` |
-| Everything + dev tools | `pip install -e ".[all,dev]"` |
 
 The core install has **no Modal/wandb/CUDA-kernel dependency** — those are lazily
 imported only when you use them, so a laptop run stays lightweight. On Linux+CUDA,
