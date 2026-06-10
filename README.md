@@ -1,4 +1,4 @@
-# 🌱 tinyGroot
+# tinyGroot
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.10%E2%80%933.12-blue.svg)](pyproject.toml)
@@ -21,10 +21,10 @@ on a laptop or scales to 8× H100 on [Modal](https://modal.com).
 git clone https://github.com/harshbhatt7585/deep-learning-papers-implementation.git
 cd deep-learning-papers-implementation/tinyGroot
 
-# Recommended: uv (https://docs.astral.sh/uv/)
-uv sync                      # creates .venv and installs the core deps
-# ...or with pip:
-# python -m venv .venv && source .venv/bin/activate && pip install -e .
+
+uv sync                   
+
+source .venv/bin/activate 
 
 # Tiny end-to-end pretrain on your Mac/laptop (downloads a small data shard):
 make quickstart              # ≈ a few hundred steps on MPS/CPU
@@ -33,10 +33,52 @@ make quickstart              # ≈ a few hundred steps on MPS/CPU
 `make quickstart` wraps `speedrun_mps.sh` with laptop-sized defaults. See
 [`examples/`](examples/) for individual steps (tokenize → train → sample).
 
+## Run training on Modal
 
-The core install has **no Modal/wandb/CUDA-kernel dependency** — those are lazily
-imported only when you use them, so a laptop run stays lightweight. On Linux+CUDA,
-`uv` pulls the cu124 PyTorch wheels automatically (see `[tool.uv.sources]`).
+
+One-time setup:
+
+```bash
+uv sync
+uv run modal setup
+
+# Training and SFT/RL expect a Modal secret named "wandb".
+uv run modal secret create wandb WANDB_API_KEY=<your-wandb-key>
+```
+
+Prepare the nanochat tokenizer + token shards once:
+
+```bash
+bash speed_run.sh pretokenize 8gpu
+```
+
+Launch a pretrain run:
+
+```bash
+SLUG=d768 D_MODEL=768 N_HEADS=6 N_LAYERS=12 MTP_HEADS=3 bash speed_run.sh train 8gpu
+```
+
+Useful variants:
+
+```bash
+# Smaller/cheaper run shapes: 1gpu, 2gpu, 4gpu, 8gpu
+bash speed_run.sh train 1gpu
+
+# Use A100-80GB instead of H100. FP8 is automatically disabled off H100.
+GPU_TYPE=A100-80GB bash speed_run.sh train 8gpu
+
+# Resume from a checkpoint on the Modal /runs volume.
+RESUME=/runs/groot/pretrain/<run>/checkpoint.pt bash speed_run.sh train 8gpu
+
+# List checkpoint paths that exist on /runs.
+uv run modal run tinygroot/modal/modal_train.py::list_runs
+```
+
+`speed_run.sh` is the recommended launcher for Modal. It selects the right Modal
+entrypoint, GPU count, FP8/compile defaults, run name, output directory, and
+checkpoint paths for pretrain, chat SFT, GSM8K RL, eval, and full-pipeline runs.
+On Linux+CUDA, `uv` pulls the cu124 PyTorch wheels automatically (see
+`[tool.uv.sources]`).
 
 ## 🔁 The pipeline
 
