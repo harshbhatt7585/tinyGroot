@@ -15,20 +15,7 @@ on a laptop or scales to 8× H100 on [Modal](https://modal.com).
 
 ---
 
-## ✨ Features
-
-- **Decoder-only Transformer** with RoPE, RMSNorm, GQA, SwiGLU/ReLU² MLPs, and an
-  FP8 training path (Hopper) that falls back cleanly to bf16/SDPA elsewhere.
-- **Multi-token prediction** (Medusa-style shared heads *and* DeepSeek-style depth
-  heads) — better pretraining sample-efficiency *and* free speculative-decoding drafters.
-- **Speculative decoding** (`speculate_mtp`, `speculate_dflash`) with a correctness
-  smoke test against plain autoregressive decoding.
-- **Static KV-cache rollout engine** for fast, allocation-free RL generation.
-- **Full post-training pipeline:** chat SFT → GSM8K REINFORCE/DAPO-style RL → eval.
-- **One launcher, anywhere:** `speed_run.sh` (Modal, 1–8 GPUs) and `speedrun_mps.sh`
-  (Apple-Silicon / CPU laptop).
-
-## 🚀 Quickstart (local, no GPU required)
+## Quickstart (local, no GPU required)
 
 ```bash
 git clone https://github.com/harshbhatt7585/deep-learning-papers-implementation.git
