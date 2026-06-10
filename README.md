@@ -80,7 +80,7 @@ checkpoint paths for pretrain, chat SFT, GSM8K RL, eval, and full-pipeline runs.
 On Linux+CUDA, `uv` pulls the cu124 PyTorch wheels automatically (see
 `[tool.uv.sources]`).
 
-## 🔁 The pipeline
+## The pipeline
 
 Each stage produces a checkpoint the next stage consumes. Runs are named by a single
 source of truth (`tinygroot.exp_naming`): `groot/{stage}/{date}-{slug}-{gpu}x{n}-{gitsha}`.
@@ -112,7 +112,7 @@ SLUG=run1 bash speed_run.sh pipeline 8gpu
 `SLUG` is the only name you type; date, GPU, and git SHA are filled in for you, and
 the full hyperparameter set is recorded in each run's `meta.json` + wandb.
 
-## 🗂️ Layout
+## Layout
 
 ```text
 tinygroot/
@@ -128,11 +128,11 @@ speedrun_mps.sh   laptop launcher (Apple-Silicon / CPU)
 examples/         minimal copy-paste runnable steps
 ```
 
-## 📚 More
+## More
 
 - [BLOG.md](BLOG.md) — experiment log, leaderboards, and the full results table.
 
 
-## 📄 License
+## License
 
 MIT © Harsh Bhatt — see [LICENSE](LICENSE).
